@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f172a;      /* Deep navy background */
-            --accent: #06b6d4;       /* Cool teal buttons/accent */
-            --gold: #f59e0b;         /* Gold for stars & highlights */
-            --card-bg: #1e293b;      /* Dark card background */
-            --text: #e2e8f0;         /* Light text */
-            --light-bg: #f8fafc;
+            --primary: #0f172a;
+            --accent: #06b6d4;
+            --gold: #f59e0b;
+            --card-bg: #1e293b;
+            --text: #e2e8f0;
+            --light: #f8fafc;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            margin: 0;
             font-family: 'Inter', sans-serif;
             background: var(--primary);
             color: var(--text);
@@ -23,18 +23,20 @@
         }
         header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 2.5rem 1rem;
+            padding: 2rem 1rem;
             text-align: center;
             border-bottom: 1px solid #334155;
         }
-        h1 { margin: 0; font-size: 3rem; color: white; }
-        h2 { color: var(--accent); text-align: center; margin-bottom: 2rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-        .hero {
-            text-align: center;
-            padding: 5rem 1rem 3rem;
-        }
-        .hero h2 { font-size: 2.8rem; color: white; margin-bottom: 1.5rem; }
+        h1 { font-size: 3.2rem; color: white; margin-bottom: 0.5rem; }
+        .tagline { font-size: 1.3rem; color: var(--accent); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        .section { padding: 6rem 0; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: white; }
+
+        .hero { text-align: center; padding: 8rem 1rem 6rem; background: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=1600') center/cover no-repeat; }
+        .hero h2 { font-size: 3.5rem; margin-bottom: 1.5rem; color: white; }
         .btn {
             background: var(--accent);
             color: white;
@@ -43,11 +45,27 @@
             border-radius: 8px;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
         }
-        .btn:hover { background: #0891b2; transform: translateY(-3px); }
-        .section { padding: 5rem 0; }
-        .gallery {
+        .btn:hover { background: #0891b2; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6,182,212,0.3); }
+
+        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .benefit-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
+        }
+        .benefit-card:hover { transform: translateY(-10px); }
+        .benefit-card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem; }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: center; }
+        .step { background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid #334155; }
+        .step-number { font-size: 3rem; color: var(--gold); margin-bottom: 1rem; font-weight: bold; }
+
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2.5rem;
@@ -56,36 +74,22 @@
             background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
         }
-        .car-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(6,182,212,0.2);
-        }
-        .car-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-        .car-info {
-            padding: 1.8rem;
-            text-align: center;
-        }
-        .stars { color: var(--gold); font-size: 1.5rem; margin: 0.8rem 0; }
-        .review {
-            font-style: italic;
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-top: 0.8rem;
-        }
+        .car-card:hover { transform: translateY(-12px); }
+        .car-card img { width: 100%; height: 240px; object-fit: cover; }
+        .car-info { padding: 1.8rem; text-align: center; }
+        .stars { color: var(--gold); font-size: 1.6rem; margin: 0.8rem 0; }
+        .review { font-style: italic; color: #94a3b8; font-size: 0.95rem; }
+
         form {
             background: var(--card-bg);
             padding: 3rem;
             border-radius: 16px;
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         label { display: block; margin: 1.2rem 0 0.6rem; font-weight: 500; color: white; }
         input, select, textarea {
@@ -97,12 +101,13 @@
             color: white;
             font-size: 1rem;
         }
-        select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" fill="%23ffffff"/></svg>') no-repeat right 1rem center; }
+        select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" fill="%23ffffff"/></svg>') no-repeat right 1rem center; background-size: 12px; }
+        button[type="submit"] { margin-top: 2rem; width: 100%; }
+
         footer {
             background: #0f172a;
             text-align: center;
-            padding: 2.5rem;
-            margin-top: 5rem;
+            padding: 3rem 1rem;
             border-top: 1px solid #334155;
         }
     </style>
@@ -111,50 +116,108 @@
 
 <header>
     <h1>CarSourcingUAE</h1>
-    <p>Trusted & Fair Car Sourcing in Dubai & UAE</p>
+    <p class="tagline">Trusted & Fair Car Sourcing in Dubai & UAE</p>
 </header>
 
 <section class="hero">
-    <h2>Find Your Perfect Car – Local or Imported</h2>
-    <p>We source the best deals across Dubai, UAE, and worldwide – no markups, no hidden fees.</p>
+    <h2>Source Your Dream Car – Local or Global</h2>
+    <p>We find the best deals across Dubai, UAE, and worldwide – transparent, no hidden fees, below market prices.</p>
     <button class="btn" onclick="document.getElementById('request-form').scrollIntoView();">Start Your Request</button>
 </section>
 
-<section class="section" id="how-it-works">
+<section class="section">
     <div class="container">
-        <h2>How It Works</h2>
-        <ol>
-            <li>Submit your request</li>
-            <li>We search the market using our private networks globally across the UAE and other GCC countries, US, Japan, and Europe</li>
-            <li>We send you the best matches</li>
-            <li>You review and decide</li>
-            <li>We handle the rest</li>
-        </ol>
+        <h2 class="section-title">Why Choose CarSourcingUAE</h2>
+        <div class="benefits">
+            <div class="benefit-card">
+                <h3>Trusted & Transparent</h3>
+                <p>No markups, no hidden fees – we show you real prices and full details.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Local & Global Network</h3>
+                <p>Private connections across UAE, GCC, US, Japan, Europe – best deals anywhere.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Below Market Deals</h3>
+                <p>We negotiate hard so you always get the car under market value.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Hassle-Free Process</h3>
+                <p>Inspections, paperwork, delivery – we handle everything.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Submit Request</h3>
+                <p>Tell us your car, budget, and preferences.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>We Search & Curate</h3>
+                <p>Using our global networks – local UAE + international auctions.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>You Review & Choose</h3>
+                <p>Get photos, videos, reports – decide with full transparency.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>We Finalize & Deliver</h3>
+                <p>Negotiation, transfer, import (if needed), doorstep delivery.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="section" id="gallery">
     <div class="container">
-        <h2>Recent Sourcing – Below Market Deals</h2>
-        <div class="gallery">
-
-            <!-- Luxury Example -->
+        <h2 class="section-title">Recent Sourcing – Below Market Deals</h2>
+        <div class="gallery-grid">
+            <!-- Luxury -->
             <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800" alt="Porsche 911 Turbo S">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800" alt="Porsche 911">
                 <div class="car-info">
                     <h3>Porsche 911 Turbo S (2020)</h3>
                     <div class="stars">★★★★★</div>
-                    <p class="review">"Sourced this beast way below market – flawless condition, saved me a fortune!"</p>
+                    <p class="review">"Sourced below market – saved AED 80k, perfect condition, full history."</p>
                 </div>
             </div>
 
-            <!-- Normal / Family Car -->
+            <!-- Family SUV -->
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=800" alt="Range Rover">
+                <div class="car-info">
+                    <h3>Range Rover Sport (2021)</h3>
+                    <div class="stars">★★★★★</div>
+                    <p class="review">"Family SUV – GCC spec, imported under budget, huge saving."</p>
+                </div>
+            </div>
+
+            <!-- Normal Daily Driver -->
             <div class="car-card">
                 <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800" alt="Toyota Camry">
                 <div class="car-info">
-                    <h3>Toyota Camry (2021)</h3>
+                    <h3>Toyota Camry (2022)</h3>
                     <div class="stars">★★★★★</div>
-                    <p class="review">"Family car sourced locally – perfect condition, massive discount vs dealers."</p>
+                    <p class="review">"Reliable daily driver – local deal, way below dealer price."</p>
+                </div>
+            </div>
+
+            <!-- Performance / Drift -->
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=800" alt="Nissan GT-R">
+                <div class="car-info">
+                    <h3>Nissan GT-R (2019)</h3>
+                    <div class="stars">★★★★★</div>
+                    <p class="review">"Drift/race beast – JDM import, sourced under market value."</p>
                 </div>
             </div>
 
@@ -162,49 +225,28 @@
             <div class="car-card">
                 <img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=800" alt="Toyota Corolla">
                 <div class="car-info">
-                    <h3>Toyota Corolla (2022)</h3>
+                    <h3>Toyota Corolla (2023)</h3>
                     <div class="stars">★★★★★</div>
-                    <p class="review">"Uber-ready spec – low km, clean title, sourced under budget fast."</p>
+                    <p class="review">"Uber-ready – low km, clean, sourced fast and cheap."</p>
                 </div>
             </div>
 
-            <!-- Performance / Drift / Racing -->
-            <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=800" alt="Nissan GT-R">
-                <div class="car-info">
-                    <h3>Nissan GT-R (2019)</h3>
-                    <div class="stars">★★★★★</div>
-                    <p class="review">"Dream drift/race car – imported under market, full history, insane value."</p>
-                </div>
-            </div>
-
-            <!-- More Variety – SUV/Family Luxury -->
-            <div class="car-card">
-                <img src="https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=800" alt="Range Rover">
-                <div class="car-info">
-                    <h3>Range Rover Sport (2020)</h3>
-                    <div class="stars">★★★★★</div>
-                    <p class="review">"GCC spec luxury SUV – huge saving on import, below market price."</p>
-                </div>
-            </div>
-
-            <!-- Hot Hatch / Performance -->
+            <!-- Hot Hatch -->
             <div class="car-card">
                 <img src="https://images.unsplash.com/photo-1503736334956-4c496cf58b08?w=800" alt="Honda Civic Type R">
                 <div class="car-info">
                     <h3>Honda Civic Type R (2021)</h3>
                     <div class="stars">★★★★★</div>
-                    <p class="review">"JDM import hot hatch – track-ready, sourced way under market value."</p>
+                    <p class="review">"Track-ready hot hatch – below market, imported clean."</p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <section class="section" id="request-form">
     <div class="container">
-        <h2>Start Your Sourcing Request</h2>
+        <h2 class="section-title">Start Your Sourcing Request</h2>
         <form action="https://formspree.io/f/your-formspree-id" method="POST">
             <label>Full Name</label><input type="text" name="name" required>
             <label>Phone / WhatsApp</label><input type="tel" name="phone" required>
@@ -230,7 +272,7 @@
 </section>
 
 <footer>
-    <p>© 2026 CarSourcingUAE – Trusted Car Sourcing in Dubai & UAE</p>
+    <p>© 2026 CarSourcingUAE – Trusted & Fair Car Sourcing in Dubai & UAE</p>
 </footer>
 
 </body>
