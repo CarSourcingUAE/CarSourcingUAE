@@ -1,8 +1,3 @@
-## Hi there 👋
-
-<!--
-# CarSourcingUAE
-
 Most Trusted & Fair Car Sourcing in Dubai and across all of UAE  
 Local cars + global imports from US, Japan, Europe
 Through our extensive network of sellers and private contacts, we will find you the best deal on your car. 
