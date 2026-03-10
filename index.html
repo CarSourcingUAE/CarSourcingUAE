@@ -14,13 +14,25 @@
             --text: #e2e8f0;
             --light: #f8fafc;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary);
             color: var(--text);
             line-height: 1.6;
         }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
         nav {
             background: #0f172a;
             padding: 1rem;
@@ -29,39 +41,87 @@
             z-index: 100;
             border-bottom: 1px solid #334155;
         }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
-        .nav-logo { font-size: 1.8rem; font-weight: bold; color: var(--accent); }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
         .nav-links {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
         }
+
         .nav-links a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        .nav-links a:hover { color: var(--accent); }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
         header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: 2.5rem 1rem;
             text-align: center;
         }
-        h1 { font-size: 3.2rem; color: white; margin-bottom: 0.5rem; }
-        .tagline { font-size: 1.3rem; color: var(--accent); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        .section { padding: 6rem 0; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: white; }
+        h1 {
+            font-size: 3.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
 
-        .hero { text-align: center; padding: 8rem 1rem 6rem; background: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=1600') center/cover no-repeat; }
-        .hero h2 { font-size: 3.5rem; color: white; margin-bottom: 1.5rem; }
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 1rem 6rem;
+            background:
+                linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.9)),
+                url('https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=1600') center/cover no-repeat;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
         .btn {
             background: var(--accent);
             color: white;
@@ -72,25 +132,84 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        .btn:hover { background: #0891b2; transform: translateY(-3px); }
 
-        .benefits, .steps, .gallery-grid, .reviews-grid {
+        .btn:hover {
+            background: #0891b2;
+            transform: translateY(-3px);
+        }
+
+        .benefits,
+        .steps,
+        .gallery-grid,
+        .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-        .benefit-card, .step, .car-card, .review-card {
+
+        .benefit-card,
+        .step,
+        .car-card,
+        .review-card {
             background: var(--card-bg);
-            padding: 2rem;
             border-radius: 12px;
             text-align: center;
             border: 1px solid #334155;
             transition: transform 0.3s;
         }
-        .benefit-card:hover, .car-card:hover, .review-card:hover { transform: translateY(-10px); }
-        .step-number { font-size: 3rem; color: var(--gold); margin-bottom: 1rem; font-weight: bold; }
-        .stars { color: var(--gold); font-size: 1.6rem; margin: 0.8rem 0; }
-        .review { font-style: italic; color: #94a3b8; font-size: 0.95rem; }
+
+        .benefit-card,
+        .step,
+        .review-card {
+            padding: 2rem;
+        }
+
+        .benefit-card:hover,
+        .car-card:hover,
+        .review-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .car-card {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            object-position: center;
+            flex-shrink: 0;
+        }
+
+        .car-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex-grow: 1;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin: 0.2rem 0;
+        }
+
+        .review {
+            font-style: italic;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
 
         .rating-summary {
             text-align: center;
@@ -107,8 +226,17 @@
             margin: 0 auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        label { display: block; margin: 1.2rem 0 0.6rem; font-weight: 500; color: white; }
-        input, select, textarea {
+
+        label {
+            display: block;
+            margin: 1.2rem 0 0.6rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        input,
+        select,
+        textarea {
             width: 100%;
             padding: 1rem;
             border: 1px solid #334155;
@@ -117,14 +245,55 @@
             color: white;
             font-size: 1rem;
         }
-        select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" fill="%23ffffff"/></svg>') no-repeat right 1rem center; background-size: 12px; }
-        button[type="submit"] { margin-top: 2rem; width: 100%; }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select {
+            appearance: none;
+            background: #0f172a url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" fill="%23ffffff"/></svg>') no-repeat right 1rem center;
+            background-size: 12px;
+        }
+
+        button[type="submit"] {
+            margin-top: 2rem;
+            width: 100%;
+        }
 
         footer {
             background: #0f172a;
             text-align: center;
             padding: 3rem 1rem;
             border-top: 1px solid #334155;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .car-card img {
+                height: 220px;
+            }
+
+            form {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
@@ -148,7 +317,7 @@
     <h1>CarSourcingUAE</h1>
     <p class="tagline">Trusted & Fair Car Sourcing in Dubai & UAE</p>
     <p>We find the best deals locally and worldwide – transparent, no hidden fees, below market prices.</p>
-    <button class="btn" onclick="document.getElementById('request-form').scrollIntoView();">Start Your Request</button>
+    <button class="btn" onclick="document.getElementById('request-form').scrollIntoView({ behavior: 'smooth' });">Start Your Request</button>
 </header>
 
 <section class="section">
@@ -208,7 +377,7 @@
         <h2 class="section-title">Recent Sourcing – Below Market Deals</h2>
         <div class="gallery-grid">
             <div class="car-card">
-                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20Porsche%20Photo.jpg" alt="FInal Porsche Photo">
+                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20Porsche%20Photo.jpg" alt="Final Porsche Photo">
                 <div class="car-info">
                     <h3>Porsche 911 Turbo S (2020)</h3>
                     <div class="stars">★★★★★</div>
@@ -226,7 +395,7 @@
             </div>
 
             <div class="car-card">
-                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20camry%20photo%20bro.png" alt="Final camry photo bro">
+                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20camry%20photo%20bro.png" alt="Final Camry Photo">
                 <div class="car-info">
                     <h3>Toyota Camry (2022)</h3>
                     <div class="stars">★★★★★</div>
@@ -235,7 +404,7 @@
             </div>
 
             <div class="car-card">
-                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/FInal%20Nissan%20GTR%20Photo.jpg" alt="FInal Nissan GTR Photo">
+                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/FInal%20Nissan%20GTR%20Photo.jpg" alt="Final Nissan GTR Photo">
                 <div class="car-info">
                     <h3>Nissan GT-R (2019)</h3>
                     <div class="stars">★★★★★</div>
@@ -244,7 +413,7 @@
             </div>
 
             <div class="car-card">
-                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/FInal%20Lexus%20Photo.jpg" alt="FInal Lexus Photo">
+                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/FInal%20Lexus%20Photo.jpg" alt="Final Lexus Photo">
                 <div class="car-info">
                     <h3>Lexus RZ (2023)</h3>
                     <div class="stars">★★★★★</div>
@@ -253,9 +422,9 @@
             </div>
 
             <div class="car-card">
-                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20Chevy%20Camaro%20SS%20photo.jpg" alt="Final Chevy Camaro SS photo">
+                <img src="https://raw.githubusercontent.com/CarSourcingUAE/CarSourcingUAE/main/Final%20Chevy%20Camaro%20SS%20photo.jpg" alt="Final Chevy Camaro SS Photo">
                 <div class="car-info">
-                    <h3>Chevrolette Camaro SS (2021)</h3>
+                    <h3>Chevrolet Camaro SS (2021)</h3>
                     <div class="stars">★★★★★</div>
                     <p class="review">"Hot coupe – track-ready, below market import."</p>
                 </div>
@@ -322,7 +491,7 @@
         <h2 class="section-title">Contact Us</h2>
         <p style="text-align:center; font-size:1.2rem;">
             WhatsApp: +971 50 123 4567<br>
-            Email: info@carsourcinguae.com<br>
+            Email: tosokolow@gmail.com<br>
             Dubai, UAE
         </p>
     </div>
